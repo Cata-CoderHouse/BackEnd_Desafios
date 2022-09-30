@@ -6,6 +6,7 @@
             <th>Nombre</th>
             <th>Cantidad</th>
             <th>Precio</th>
+            <th>Foto</th>
         </tr>
 
         {{#each productos}}
@@ -13,7 +14,9 @@
                 <td>{{nombre}}</td>
                 <td>{{cantidad}}</td>
                 <td>{{precio}}</td>
+                <td> <img src="{{foto}}" style="width: 7vw; min-width: 70px;" alt="foto de {{nombre}}"></td>
             </tr>
+            
         {{/each}}
     </table>
     <button onclick="window.location.href='/'">Regresar</button>
