@@ -60,7 +60,6 @@ export class Contenedor{
     async getAll(){ //Idevuelve un array con los objetos presentes en el archivo I
         const contenidoArchivo = await this.#leerUnArchivo();
         console.log(contenidoArchivo);
-
     }
 
     async deleteById(id){

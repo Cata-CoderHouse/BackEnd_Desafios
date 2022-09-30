@@ -24,6 +24,7 @@ app.get('/',(req,res)=>{
 
 //2 Ruta get '/productos' que devuelva un array con todos los productos disponibles en el servidor
 app.get('/products',(req,res)=>{
+    console.log(products.getAll());
     res.json(products.getAll())
 })
 
@@ -31,5 +32,6 @@ app.get('/products',(req,res)=>{
 app.get('/productoRandom',(req,res)=>{
     let tamanioArr = products.tamanio();
     let IdRandom= Math.floor(Math.random()*tamanioArr+1);
+    console.log(products.getById(IdRandom));
     res.json(products.getById(IdRandom))
 })
