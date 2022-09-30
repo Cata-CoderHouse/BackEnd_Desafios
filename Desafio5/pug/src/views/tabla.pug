@@ -1,0 +1,23 @@
+extends layoutBase
+block tabla
+    h2 Tabla de Registros
+    hr
+    div
+        if productos.length>0
+            table
+                tr
+                    th Nombre
+                    th Cantidad
+                    th Precio
+                    th Foto
+                each producto in productos
+                    tr
+                        td #{producto.nombre}
+                        td #{producto.cantidad}
+                        td #{producto.precio}
+                        td 
+                            img(src="#{foto}" style="width: 7vw; min-width: 70px;" alt='foto de #{producto.nombre}')
+        else
+            p No hay productos cargados
+        button(onclick="window.location.href='/'" )
+            b Regresar
