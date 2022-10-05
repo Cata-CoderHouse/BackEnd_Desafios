@@ -1,0 +1,23 @@
+[
+  {
+    "nombre": "Microscopio",
+    "precio": 5000,
+    "cantidad": 20,
+    "id": 1,
+    "foto": "https://cdn3.iconfinder.com/data/icons/education-209/64/microscope-lab-science-school-256.png"
+  },
+  {
+    "nombre": "Tablero",
+    "precio": 7000,
+    "cantidad": 40,
+    "id": 2,
+    "foto": "https://cdn3.iconfinder.com/data/icons/education-209/64/board-math-class-school-512.png"
+  },
+  {
+    "nombre": "Acuarelas",
+    "precio": 1000,
+    "cantidad": 50,
+    "id": 3,
+    "foto": "https://cdn3.iconfinder.com/data/icons/education-209/64/paint-color-pallete-brush-academy-512.png"
+  }
+  ]

@@ -1,0 +1,25 @@
+<h2>Tabla de Registros</h2>
+<hr>
+<div>
+    <table>
+        <% if(productos.length!=0) { %>
+            <tr>
+                <th>Nombre</th>
+                <th>Cantidad</th>
+                <th>Precio</th>
+                <th>Foto</th>
+            </tr>
+            <% productos.forEach(prod => { %>
+                <tr>
+                    <td><%= prod.nombre %></td>
+                    <td><%= prod.cantidad %></td>
+                    <td><%= prod.precio %></td>
+                    <td> <img src="<%= prod.foto %>" style="width: 7vw; min-width: 70px;" alt="foto de {{nombre}}"></td>
+                </tr>
+            <% }) %>
+        <% } else { %>
+            <p>No se encontraron productos</p>
+        <% } %>
+    </table>
+    <button onclick="window.location.href='/'">Regresar</button>
+</div>

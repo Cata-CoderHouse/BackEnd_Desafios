@@ -1,0 +1,17 @@
+extends layoutBase
+block formulario
+    h2 Formulario de productos
+    hr
+    br
+    div
+        form(action='/productos' method='post')
+            p
+                label &nbsp Nombre: 
+                input(type='text' name='nombre' id='nombre')
+                label   Cantidad: 
+                input(type='number' name='cantidad' id='cantidad')
+                label   Precio: 
+                input(type='text' name="precio" id='precio')
+                label   URL Foto: 
+                input(type='text' name='foto' id='foto')
+            input(type='submit' value='ENVIAR')

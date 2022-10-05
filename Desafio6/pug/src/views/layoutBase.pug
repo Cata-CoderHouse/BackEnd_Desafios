@@ -1,0 +1,13 @@
+html
+    head
+        title Desafio PUG
+    body
+        h1 Productos
+        hr
+        #{render}
+        if render 
+            block formulario
+        else 
+            block tabla
+        
+    
