@@ -8,5 +8,33 @@
         Precio: <input type="text" name="precio" id="precio">
         URL Foto: <input type="text" name="foto" id="foto">
         <input type="submit" value="ENVIAR">
+        <input type="button" value="ACTUALIZAR" id="boton">
     </form>
+</div>
+
+<h2>Tabla de Registros</h2>
+<hr>
+<div>
+    <table id="tablaP">
+        {{#if productos}}
+            <tr>
+                <th>Nombre</th>
+                <th>Cantidad</th>
+                <th>Precio</th>
+                <th>Foto</th>
+            </tr>
+            {{#each productos}}
+                <tr>
+                    <td>{{nombre}}</td>
+                    <td>{{cantidad}}</td>
+                    <td>{{precio}}</td>
+                    <td> <img src="{{foto}}" style="width: 7vw; min-width: 70px;" alt="foto de {{nombre}}"></td>
+                </tr>
+                
+            {{/each}}
+        {{else}}
+            <p>No se encontraron productos</p>
+        {{/if}}
+    </table>
+    <button onclick="window.location.href='/'">Regresar</button>
 </div>

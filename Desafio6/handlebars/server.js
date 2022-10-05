@@ -43,19 +43,19 @@ app.engine('hbs',hbs.engine({
 app.use(express.static('./public'));
 
 app.get('/',(req, res)=>{
-    res.render('partials/formulario') //El index se incrusta al default:layout1.hbs
-    res.sendFile(__dirname+'/views/partials/formulario.hbs');
+    res.render('partials/formulario',{productos}) //El index se incrusta al default:layout1.hbs
+    //res.sendFile(__dirname+'/views/partials/formulario.hbs');
 })
 
 app.post('/productos',(req, res)=>{
     let producto=req.body;
     productos.push(producto);
     res.redirect('/productos');
-    console.log(req.body);
-    console.log(productos);
+    //console.log(req.body);
+    //console.log(productos);
 })
 
-app.get('/productos',(req,res)=>{
+app.get('/productos',(req, res)=>{
     res.render('partials/tabla',{productos})
 })
 
@@ -65,13 +65,14 @@ io.on('connection',(socket)=>{
     socket.emit('mensajes','Bienvenido al servidor');
     //socket.emit('productos',productos);
     // socket.emit('productos',productos);
-    socket.on('nuevoProducto',(data)=>{ //recibo e nuevo producto del cliente
-         productos.push(data); //inserto el producto a la lista productos
-         io.sockets.emit('productos',productos); //emito la lista de productos a todos los clientes
+    socket.on('envio-nuevoProducto',(data)=>{ //recibo e nuevo producto del cliente
+        console.log('se recibio nuevo producto') 
+        productos.push(data); //inserto el producto a la lista productos
+        console.log('productos',productos);
+        io.sockets.emit('envio-productos',productos); //mensaje global a todos los clientes conectados al canal de websocket
     })
     socket.on('notificacion', (data) => {
         console.log(data);
-        io.socket.emit('productos', productos); //mensaje global a todos los clientes conectados al canal de websocket
     })
 })
 
