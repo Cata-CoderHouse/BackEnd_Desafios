@@ -42,10 +42,11 @@ app.engine('hbs',hbs.engine({
 //cargar los archivos estáticos de public
 app.use(express.static('./public'));
 
-app.get('/',(req, res)=>{
-    res.render('partials/formulario',{productos}) //El index se incrusta al default:layout1.hbs
+app.get('/',(req, res)=>{ 
+    //res.render('../public/tablaSocket',{layout:'../partials/formulario'})  
+    res.render('partials/formulario') //El index se incrusta al default:layout1.hbs   
     //res.sendFile(__dirname+'/views/partials/formulario.hbs');
-})
+});
 
 app.post('/productos',(req, res)=>{
     let producto=req.body;

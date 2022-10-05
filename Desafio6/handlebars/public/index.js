@@ -19,24 +19,22 @@ boton.addEventListener('click',()=>{
 
 //Recibir a informacion del servidor para ver la tabla acualizada
 socket.on('envio-productos', (data) => {
+    console.log('llegaron los productos al cliente');
     console.log(data);
-    fetch('http://localhost:3000/')
-        .then((response) => response.json())
-        .then((data) => {
+    let nuevoArreglo;
+    let tablaP= document.getElementById('tablaP')
+    tablaP.innerHTML = '';
+            data.forEach(prod=>{
+                nuevoArreglo = `<tr>
+                    <td>${prod.nombre}</td>
+                    <td>${prod.cantidad}</td>
+                    <td>${prod.precio}</td>
+                    <td> <img src="${prod.foto}" style="width: 7vw; min-width: 70px;" alt="foto de {{nombre}}"></td>
+                </tr>`
 
-            let nuevoArreglo = data.map(prod=>
-                `<tr>
-                <td>${prod.nombre}</td>
-                <td>${prod.cantidad}</td>
-                <td>${prod.precio}</td>
-                <td> <img src="${prod.foto}" style="width: 7vw; min-width: 70px;" alt="foto de {{nombre}}"></td>
-            </tr>`)
-            document.getElementById('tablaP').innerHTML += nuevoArreglo;
+                tablaP.innerHTML += nuevoArreglo;
+            })
+            
             console.log('Success:', data);
-        })
-        .catch((error) => {
-            //console.error('Error:', error);
-        });
     socket.emit('notificacion', 'Se actualizó la tabla');
-
-})
+    })
