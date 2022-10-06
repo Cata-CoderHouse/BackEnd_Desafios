@@ -1,4 +1,0 @@
-Me gusto trabajar con PUG una sintaxis muy liviana, una abstracción de HTML simple y  eficaz, 
-trabajar las funciones con js son bastantes sencillas. Al contrario de los otros motores, 
-que son más rígidos en la sintaxis, requieren un HTML completo, por lo que no hay abstracción 
-por ese lado y es u poco dificil acotar las funciones en js.
