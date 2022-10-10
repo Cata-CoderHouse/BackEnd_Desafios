@@ -7,7 +7,6 @@
         Cantidad: <input type="number" name="cantidad" id="cantidad">
         Precio: <input type="text" name="precio" id="precio">
         URL Foto: <input type="text" name="foto" id="foto">
-        <input type="submit" value="ENVIAR">
         <input type="button" value="ACTUALIZAR" id="boton">
     </form>
 </div>
@@ -16,14 +15,20 @@
     <hr>
     <div>
         <table id="tablaP">
-                <tr>
-                    <th>Nombre</th>
-                    <th>Cantidad</th>
-                    <th>Precio</th>
-                    <th>Foto</th>
-                </tr>
+            <h3 id="msjNoPdctos">No hay productos cargados, haga click en ACTUALIZAR para traer productos</h3>
         </table>
+            
     </div>
 </div>
+
+<h2>Mensjes de Chat</h2>
+<form onsubmit="return addMessage(this)">
+    <input type="text" id="email" placeholder="Tu Email" >
+    <input type="text" id="texto" placeholder="Cuéntanos algo...">
+    <input type="submit" value="Enviar" id="boton-chat">
+</form>
+
+<h3>Historial de Chat</h3>
+<div id="chat"></div>
 
 

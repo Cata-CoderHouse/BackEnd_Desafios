@@ -31,6 +31,13 @@ const contenidoArchivo = fs.readFileSync('./productos.txt', 'utf8', (err, data) 
 const productos = JSON.parse(contenidoArchivo);
 //console.table(productos);
 
+const messages = [
+    { email: "Juan@email.com", texto: "¡Hola! ¿Que tal?" },
+    { email: "Pedro@email.com", texto: "¡Muy bien! ¿Y vos?" },
+    { email: "Ana@email.com", texto: "¡Genial!" }
+ ];
+
+
 //enlazar hds con el app
 app.engine('hbs',hbs.engine({
     extname:'.hbs', // opcional, la extension de los archivos handlerbars
@@ -44,7 +51,7 @@ app.use(express.static('./public'));
 
 app.get('/',(req, res)=>{ 
     //res.render('../public/tablaSocket',{layout:'../partials/formulario'})  
-    res.render('partials/formulario') //El index se incrusta al default:layout1.hbs   
+    res.render('partials/formulario',) //El index se incrusta al default:layout1.hbs   
     //res.sendFile(__dirname+'/views/partials/formulario.hbs');
 });
 
@@ -56,17 +63,13 @@ app.post('/productos',(req, res)=>{
     //console.log(productos);
 })
 
-app.get('/productos',(req, res)=>{
-    res.render('partials/tabla',{productos})
-})
-
 //Para usar los sockets desde el lado del servidor
 io.on('connection',(socket)=>{
     console.log('Se conectó un cliente');
     socket.emit('mensajes','Bienvenido al servidor');
     //socket.emit('productos',productos);
     // socket.emit('productos',productos);
-    socket.on('envio-nuevoProducto',(data)=>{ //recibo e nuevo producto del cliente
+   socket.on('envio-nuevoProducto',(data)=>{ //recibo e nuevo producto del cliente
         console.log('se recibio nuevo producto') 
         productos.push(data); //inserto el producto a la lista productos
         console.log('productos',productos);
@@ -75,6 +78,15 @@ io.on('connection',(socket)=>{
     socket.on('notificacion', (data) => {
         console.log(data);
     })
+
+    //Para el chat
+    //socket.emit('messages-chat', messages);
+    socket.on('new-message', (data) => {
+        messages.push(data);
+        console.log('messages:',messages);
+        io.sockets.emit('messages-chat', messages); //mensaje global a todos los clientes conectados al canal de websocket
+    })
+
 })
 
     // let tabla = document.getElementById('tabla');
@@ -88,3 +100,4 @@ io.on('connection',(socket)=>{
     //     </tr>
     //     `
     // });
+
