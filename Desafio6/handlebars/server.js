@@ -5,6 +5,7 @@ const fs = require('fs');
 const {Server: IOServer} = require('socket.io'); 
 const {Server: HttpServer} = require('http');
 
+
 //para el hbs
 app.set('views','./views');
 app.set('view engine','hbs');
@@ -27,7 +28,7 @@ app.use(express.json())
 const contenidoArchivo = fs.readFileSync('./productos.txt', 'utf8', (err, data) => {
     if (err){console.log(err)}
     else {console.log('data cargada')}
-}); 
+});
 const productos = JSON.parse(contenidoArchivo);
 //console.table(productos);
 
@@ -69,24 +70,25 @@ io.on('connection',(socket)=>{
     socket.emit('mensajes','Bienvenido al servidor');
     //socket.emit('productos',productos);
     // socket.emit('productos',productos);
+   socket.emit('envio-productos',{productos: productos});
+   socket.emit('envio-productos',{chats: messages});
    socket.on('envio-nuevoProducto',(data)=>{ //recibo e nuevo producto del cliente
         console.log('se recibio nuevo producto') 
         productos.push(data); //inserto el producto a la lista productos
         console.log('productos',productos);
-        io.sockets.emit('envio-productos',productos); //mensaje global a todos los clientes conectados al canal de websocket
-    })
-    socket.on('notificacion', (data) => {
-        console.log(data);
+        io.sockets.emit('envio-productos',{productos: data}); //mensaje global a todos los clientes conectados al canal de websocket  
     })
 
     //Para el chat
     //socket.emit('messages-chat', messages);
     socket.on('new-message', (data) => {
+        console.log('Se recibio mensaje desde el cliente',data)
         messages.push(data);
         console.log('messages:',messages);
-        io.sockets.emit('messages-chat', messages); //mensaje global a todos los clientes conectados al canal de websocket
+        io.sockets.emit('envio-productos',{chats: messages}); //mensaje global a todos los clientes conectados al canal de websocket
     })
-
+    //envio al cliente
+    
 })
 
     // let tabla = document.getElementById('tabla');

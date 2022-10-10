@@ -3,7 +3,7 @@ console.log('Se conectó un cliente');
 const socket = io(); //para usar los sockets desde el lado del cliente
 
 
-//Funcion enlazar lista original d eproductos al html
+//Funcion renderizar y enlazar lista original d eproductos al html
 function renderizarProductos(listaProd){
     console.log('renderizando data de productos')
     let mensaje = document.getElementById('msjNoPdctos');
@@ -26,6 +26,38 @@ function renderizarProductos(listaProd){
                 tablaP.innerHTML += nuevoArreglo});
 }
 
+//funcion para renderizar chat
+function renderChat(data) {
+    let historialChat = document.getElementById('chat');
+    historialChat.innerHTML = '';
+    data.forEach(msjChat => {
+        historialChat.innerHTML += `<div>
+        <p><strong style="color: blue">${msjChat.email}</strong> [<span style="color: brown">${fecha}</span>]: <i style="color: green">${msjChat.texto}</i></p>
+        </div>`
+    });
+}
+//datos de fecha
+n =  new Date();
+y = n.getFullYear();
+m = n.getMonth() + 1;
+d = n.getDate();
+h = n.getHours();
+mi = n.getMinutes();
+s = n.getSeconds();
+const fecha = d+'/'+m+'/'+ y +' '+h+':'+mi+':'+s;
+
+
+//funcion enviando mensajes chat al servidor
+let botonChat=document.getElementById('boton-chat');
+botonChat.addEventListener('click',()=>{
+    const mensaje = {
+        email: document.getElementById('email').value,
+        texto: document.getElementById('texto').value
+    }
+    console.log('Enviando nuevo mensaje al servidor',mensaje)
+    socket.emit('new-message', mensaje);
+})
+
 
 //Enviar el nuevo producto al servidor
 let boton=document.getElementById('boton');
@@ -44,48 +76,19 @@ boton.addEventListener('click',()=>{
 //Recibir a informacion del servidor para ver la tabla acualizada
 socket.on('envio-productos', (data) => {
     console.log('llegaron los productos al cliente');
-    console.log(data);
-    renderizarProductos(data);
-    console.log('Success:', data);
-    socket.emit('notificacion', 'Se actualizó la tabla');
+    console.log(data.productos);
+    renderizarProductos(data.productos);
+    console.log('Success:', data.productos);
+    socket.emit('notificacion', 'Se actualizó la tabla de productos');
+
+    console.log('llegaron los chats al cliente')
+    console.log(data.chats);
+    renderChat(data.chats);
+    console.log('Success:', data.chats);
+    socket.emit('notificacion', 'Se actualizó la tabla de productos');
     })
 
 
-// //Para el chat
 
-//datos de fecha
-n =  new Date();
-// y = n.getFullYear();
-// m = n.getMonth() + 1;
-// d = n.getDate();
-
-//funcion enviando mensajes
-let botonChat=document.getElementById('boton-chat');
-botonChat.addEventListener('click',()=>{
-    const mensaje = {
-        email: document.getElementById('email').value,
-        text: document.getElementById('texto').value
-    }
-    socket.emit('new-message', mensaje);
-})
-
-//funcion para renderizar
-function renderChat(data) {
-    let historialChat = document.getElementById('chat');
-    historialChat.innerHTML = 'Hola';
-    data.forEach(msjChat => {
-        console.log('mensaje de chat',msjChat);
-        historialChat.innerHTML += `<div>
-        <strong>${msjChat.email}</strong>:
-        <p>${msjChat.texto}</p>
-        </div>`
-    });
-}
-
-//funcion para recibir por el sockets
-socket.on('messages-chat', (data) => {
-    console.log('mensajes chat en el cliente',data);
-    renderChat(data);
-})
 
 
