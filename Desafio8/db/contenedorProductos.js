@@ -1,7 +1,7 @@
 const {option} = require('./config.js')
-const knex = require('knex')(option.sqlite);
+const knex = require('knex')(option.mysql);
 
-class ContenedorProductos{
+module.exports = class ContenedorProductos{
 
     constructor(configConnection, tabla){
         this.knex = knex(configConnection);

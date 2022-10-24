@@ -1,6 +1,6 @@
 const {option} = require('./config');
 
-const knex = require('Knex')(option.mysql);
+const knex = require('knex')(option.mysql);
 
 knex.schema.createTable('productos',table=>{
     table.increments('id').primary();
