@@ -1,0 +1,57 @@
+[{
+  "_id": {
+    "$oid": "636008b280dbdaf1b6ea0178"
+  },
+  "nombre": "silla gammer",
+  "precio": 420,
+  "cantidad": 0,
+  "urlImg": "imagen2.jpg"
+},{
+  "_id": {
+    "$oid": "636008b280dbdaf1b6ea017c"
+  },
+  "nombre": "escritorio",
+  "precio": 225,
+  "cantidad": 100,
+  "urlImg": "imagen6.jpg"
+},{
+  "_id": {
+    "$oid": "636008b280dbdaf1b6ea017d"
+  },
+  "nombre": "monitor",
+  "precio": 275,
+  "cantidad": 100,
+  "urlImg": "imagen7.jpg"
+},{
+  "_id": {
+    "$oid": "636008b280dbdaf1b6ea017e"
+  },
+  "nombre": "smart watch",
+  "precio": 408,
+  "cantidad": 0,
+  "urlImg": "imagen8.jpg"
+},{
+  "_id": {
+    "$oid": "636008b280dbdaf1b6ea017f"
+  },
+  "nombre": "impresora",
+  "precio": 303,
+  "cantidad": 100,
+  "urlImg": "imagen9.jpg"
+},{
+  "_id": {
+    "$oid": "636008b280dbdaf1b6ea0180"
+  },
+  "nombre": "Laptop",
+  "precio": 500,
+  "cantidad": 0,
+  "urlImg": "imagen10.jpg"
+},{
+  "_id": {
+    "$oid": "636009f080dbdaf1b6ea0181"
+  },
+  "nombre": "torre PC",
+  "precio": 500,
+  "cantidad": 0,
+  "urlImg": "imagen11.jpg"
+}]
