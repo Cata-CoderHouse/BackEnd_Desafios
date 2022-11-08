@@ -1,0 +1,33 @@
+[
+	{
+		"timestamp": "12/05/2021 12:50:25",
+		"productos": [],
+		"id": 1
+	},
+	{
+		"timestamp": "25/07/2019 12:50:25",
+		"productos": [
+			{
+				"timestamp": "10/17/2022, 12:27:57 AM",
+				"nombre": "PC 1555",
+				"descripcion": "Este es un PC",
+				"codigo": "100",
+				"imagen": "image.com/imgPC",
+				"precio": 105000,
+				"inventario": 200,
+				"id": 1
+			},
+			{
+				"timestamp": "10/17/2022, 12:29:12 AM",
+				"nombre": "Hp Ink",
+				"descripcion": "Este es una impresora",
+				"codigo": "101",
+				"imagen": "image.com/imgImpresora",
+				"precio": 10500,
+				"inventario": 50,
+				"id": 2
+			}
+		],
+		"id": 2
+	}
+]
