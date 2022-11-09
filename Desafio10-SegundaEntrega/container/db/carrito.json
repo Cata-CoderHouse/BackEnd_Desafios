@@ -12,7 +12,7 @@
 				"nombre": "PC 1555",
 				"descripcion": "Este es un PC",
 				"codigo": "100",
-				"imagen": "image.com/imgPC",
+				"imagen": "https://cdn2.iconfinder.com/data/icons/whcompare-isometric-web-hosting-servers/50/value-server-512.png",
 				"precio": 105000,
 				"inventario": 200,
 				"id": 1
@@ -22,7 +22,7 @@
 				"nombre": "Hp Ink",
 				"descripcion": "Este es una impresora",
 				"codigo": "101",
-				"imagen": "image.com/imgImpresora",
+				"imagen": "https://cdn4.iconfinder.com/data/icons/azullustre-mayosoft/AzulLustre_icons/256/Impresora.png",
 				"precio": 10500,
 				"inventario": 50,
 				"id": 2
